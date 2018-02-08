@@ -1,0 +1,96 @@
+<!--
+  Generated template for the ShowVideoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ titleVideo }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding>
+  <iframe width="100%" height="210" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/uskO_96I4YU">
+  </iframe>
+  <ion-list no-margin>
+    <ion-item (click)="showDescrip()">
+      {{ titleVideo }}
+      <ion-icon item-end small name="ios-arrow-down"></ion-icon>
+    </ion-item>
+    <ion-card-content *ngIf="showDesc">
+      Descripcion larga de video asd asd asd asd as da sdasd asdas, asdasd.
+    </ion-card-content>
+  </ion-list>
+  <ion-grid no-padding padding-horizontal>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button outline icon-left color="firstColor" block>
+          <ion-icon name="rewind"></ion-icon>
+          Ant.
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button outline icon-right color="firstColor" block>
+          Sig.
+          <ion-icon name="fastforward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button icon-left color="firstColor" block>
+          <ion-icon name="download"></ion-icon>
+          Descargar
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <hr>
+
+  <ion-list>
+    <button ion-item class="list-video">
+      <ion-thumbnail item-start>
+        <img src="https://i.ytimg.com/vi/uskO_96I4YU/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCOYJa-1983Ntb5IU7Y3v6Y6XzbLQ">
+      </ion-thumbnail>
+      <h2>EDteam presenta</h2>
+      <p>¿Qué estamos planeando? Este sábado 3 de febrero develaremos el secreto. Avisa a todos tus conocidos que no compren en
+        EDteam (ni en ningún otro lugar).</p>
+      <p>
+        <ion-badge>#EDtaller 122</ion-badge>
+      </p>
+      <button ion-button clear icon-only item-end color="textColor">
+        <ion-icon name="play"></ion-icon>
+      </button>
+    </button>
+    <button ion-item class="list-video">
+      <ion-thumbnail item-start>
+        <img src="https://i.ytimg.com/vi/Vt-10hIyuFA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBNi6-YMy4sRaoSCn8mO9LUdZsTLg">
+      </ion-thumbnail>
+      <h2>Introducción a SQL</h2>
+      <p>Los datos son lo más importante en una aplicación. En este EDtaller daremos nuestros primeros pasos de SQL con Alexys
+        Lozada, aprende lo necesario para manejar bases de datos relacionales.</p>
+      <p>
+        <ion-badge>#EDtaller 121</ion-badge>
+      </p>
+      <button ion-button clear icon-only item-end color="textColor">
+        <ion-icon name="play"></ion-icon>
+      </button>
+    </button>
+    <button ion-item class="list-video">
+      <ion-thumbnail item-start>
+        <img src="https://i.ytimg.com/vi/tA01Lvgn1DA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCv0ULakM_4fvhcWCZiC6AkcBIl-Q">
+      </ion-thumbnail>
+      <h2>Beneficios de usar GSuite en la empresa</h2>
+      <p>Beneficios de usar GSuite en la empresa</p>
+      <p>
+        <ion-badge>#EDtaller 120</ion-badge>
+      </p>
+      <button ion-button clear icon-only item-end color="textColor">
+        <ion-icon name="play"></ion-icon>
+      </button>
+    </button>
+  </ion-list>
+</ion-content>
