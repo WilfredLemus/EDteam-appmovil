@@ -14,4 +14,13 @@ edtaller {
       font-size: 10px;
     }
   }
+
+  ion-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: auto;
+  }
 }

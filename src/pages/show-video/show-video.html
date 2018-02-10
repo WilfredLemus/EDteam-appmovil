@@ -7,25 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ titleVideo }}</ion-title>
+    <ion-title>{{ video.snippet.title }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content no-padding>
-  <iframe width="100%" height="210" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/uskO_96I4YU">
+  <iframe type="text/html" width="100%" height="210" frameborder="0" allowfullscreen [src]="videoURL | youTube">
   </iframe>
   <ion-list no-margin>
     <ion-item (click)="showDescrip()">
-      {{ titleVideo }}
+      {{ video.snippet.title }}
       <ion-icon item-end small name="ios-arrow-down"></ion-icon>
     </ion-item>
     <ion-card-content *ngIf="showDesc">
-      Descripcion larga de video asd asd asd asd as da sdasd asdas, asdasd.
+      {{ video.snippet.description }}
     </ion-card-content>
   </ion-list>
   <ion-grid no-padding padding-horizontal>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col col-6>
         <button ion-button outline icon-left color="firstColor" block>
           <ion-icon name="rewind"></ion-icon>
@@ -38,10 +38,10 @@
           <ion-icon name="fastforward"></ion-icon>
         </button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
       <ion-col col-12>
-        <button ion-button icon-left color="firstColor" block>
+        <button ion-button icon-left color="textColor" block>
           <ion-icon name="download"></ion-icon>
           Descargar
         </button>
@@ -50,7 +50,7 @@
   </ion-grid>
   <hr>
 
-  <ion-list>
+  <!-- <ion-list>
     <button ion-item class="list-video">
       <ion-thumbnail item-start>
         <img src="https://i.ytimg.com/vi/uskO_96I4YU/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCOYJa-1983Ntb5IU7Y3v6Y6XzbLQ">
@@ -92,5 +92,5 @@
         <ion-icon name="play"></ion-icon>
       </button>
     </button>
-  </ion-list>
+  </ion-list> -->
 </ion-content>
