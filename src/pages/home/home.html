@@ -7,54 +7,25 @@
       <img src="assets/imgs/EDteam-logo.svg" class="title-logo">
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <!-- <button ion-button icon-only>
         <ion-icon name="search"></ion-icon>
-      </button>
+      </button> -->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+<ion-content *ngIf="!dataLoad">
+  <ion-spinner *ngIf="!dataLoad"></ion-spinner>
+</ion-content>
+<ion-content *ngIf="listVideos !== undefined">
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
 
-<ion-content>
-  <ion-card (tap)="showVideo()">
-    <img src="https://i.ytimg.com/vi/uskO_96I4YU/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAVkZXUyzYoWAd0IIBO9z554sJbFQ" />
+  <ion-card *ngFor="let video of listVideos | async" (click)="showVideo(video)">
+    <img src="{{ video.snippet.thumbnails.high.url }}" />
     <ion-card-content>
       <ion-card-title>
-         EDteam presenta
+        {{ video.snippet.title }}
       </ion-card-title>
       <ion-item no-padding>
-        <ion-badge item-start>#EDtaller 122</ion-badge>
-        <button ion-button icon-left item-end color="textColor">
-          <ion-icon name="download"></ion-icon>
-          Descarg.
-        </button>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <img src="https://i.ytimg.com/vi/KXVq8sn640A/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLDfQLFKZWnwsmemuEVbx2ZQjr02LQ"
-    />
-    <ion-card-content>
-      <ion-card-title>
-        ¿Cómo convertirme en programador?
-      </ion-card-title>
-      <ion-item no-padding>
-        <ion-badge item-start>#EDPreguntas 2018.1</ion-badge>
-        <button ion-button icon-left item-end color="secondary">
-          <ion-icon name="checkmark-circle"></ion-icon>
-          OFF-LINE
-        </button>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <img src="https://i.ytimg.com/vi/D1xxaPFlW0U/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBDh1NtYIhGWKyaRhSyWp3Hw9tL-w"
-    />
-    <ion-card-content>
-      <ion-card-title>
-        Amazon Go, la tienda del futuro
-      </ion-card-title>
-      <ion-item no-padding>
-        <ion-badge item-start>#EDnews 2018.2</ion-badge>
         <button ion-button icon-left item-end color="textColor">
           <ion-icon name="download"></ion-icon>
           Descarg.

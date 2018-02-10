@@ -10,6 +10,10 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpModule } from '@angular/http';
+// import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player'; ELIMINAR
+import { YoutubeProvider } from '../providers/youtube/youtube';
+import { YouTubePipe } from '../pipes/you-tube/you-tube';
 
 @NgModule({
   declarations: [
@@ -17,11 +21,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     EdtallerPage,
     ShowVideoPage,
-    ListPage
+    ListPage,
+    YouTubePipe
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +40,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    // YoutubeVideoPlayer,
+    YoutubeProvider
   ]
 })
 export class AppModule {}

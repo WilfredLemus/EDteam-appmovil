@@ -2,4 +2,13 @@ page-home {
   ion-title div{
     padding: 0 !important;
   }
+
+  ion-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: auto;
+  }
 }
