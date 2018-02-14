@@ -6,12 +6,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { EdtallerPage } from '../pages/edtaller/edtaller';
 import { ShowVideoPage } from './../pages/show-video/show-video';
-import { ListPage } from '../pages/list/list';
+import { DownloadVideoPage } from './../pages/download-video/download-video';
+import { ShowVideoDownloadPage } from '../pages/show-video-download/show-video-download';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
-// import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player'; ELIMINAR
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+// import { VideoPlayer } from '@ionic-native/video-player';
 import { YoutubeProvider } from '../providers/youtube/youtube';
 import { YouTubePipe } from '../pipes/you-tube/you-tube';
 
@@ -21,7 +24,8 @@ import { YouTubePipe } from '../pipes/you-tube/you-tube';
     HomePage,
     EdtallerPage,
     ShowVideoPage,
-    ListPage,
+    DownloadVideoPage,
+    ShowVideoDownloadPage,
     YouTubePipe
   ],
   imports: [
@@ -35,14 +39,18 @@ import { YouTubePipe } from '../pipes/you-tube/you-tube';
     HomePage,
     EdtallerPage,
     ShowVideoPage,
-    ListPage
+    DownloadVideoPage,
+    ShowVideoDownloadPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // YoutubeVideoPlayer,
-    YoutubeProvider
+    YoutubeProvider,
+    File,
+    FileTransfer,
+    // VideoPlayer
   ]
 })
 export class AppModule {}

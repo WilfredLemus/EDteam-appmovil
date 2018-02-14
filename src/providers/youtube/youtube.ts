@@ -15,6 +15,7 @@ export class YoutubeProvider {
   ytURL = 'https://www.googleapis.com/youtube/v3/';
   channelID = 'UCP15FVAA2UL-QOcGhy7-ezA';
   edtallerID = 'PLv6CkzbbGAlX0-_-Ue9I0dlK0EV_9Sp3i';
+  urlDown = 'https://helloacm.com/api/video/?cached&lang=en&hash=1443b23802e83bb311e5a36af7bd4f3a&video=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D'
 
   constructor(public http: Http) {
   }
@@ -47,6 +48,14 @@ export class YoutubeProvider {
       + '&part=snippet,id')
       .map(res => {
         return res.json()['items'];
+      })
+  }
+
+  getVideoDownload(videoId) {
+    return this.http
+      .get(this.urlDown + videoId)
+      .map(res => {
+        return res.json();
       })
   }
 

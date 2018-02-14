@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { EdtallerPage } from '../pages/edtaller/edtaller';
 import { ShowVideoPage } from '../pages/show-video/show-video';
+import { DownloadVideoPage } from './../pages/download-video/download-video';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,7 +26,7 @@ export class MyApp {
       { title: 'Inicio', icon: 'home', component: HomePage },
       { title: 'EDtaller', icon: 'albums', component: EdtallerPage },
       { title: 'Cursos', icon: 'bookmarks', component: EdtallerPage },
-      { title: 'Descargados', icon: 'download', component: EdtallerPage },
+      { title: 'Videos Descargados', icon: 'download', component: DownloadVideoPage },
     ];
 
   }
