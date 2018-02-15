@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import { DownloadVideoPage } from './../download-video/download-video';
 
 
 
@@ -35,6 +36,15 @@ export class ShowVideoPage {
 
   showDescrip(){
     this.showDesc = !this.showDesc;
+  }
+
+  downloadVideo(video) {
+    this.navCtrl.push(DownloadVideoPage, {video});
+    // this.navCtrl.push(ShowVideoPage, { video });
+  }
+
+  showVideoDown() {
+    this.navCtrl.setRoot(DownloadVideoPage)
   }
 
 }

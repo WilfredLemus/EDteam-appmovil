@@ -5,38 +5,61 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Videos Descargados</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="deleteAllConfirm()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <ion-list>
-      <button ion-item class="list-video">
+  <ion-spinner *ngIf="!dataLoad"></ion-spinner>
+  <ion-list *ngIf="dataLoad">
+    <!-- <button ion-item class="list-video" *ngFor="let video of videos" (click)="showVideo(video)" [disabled]="!video.statusDown" (press)="deleteVideoConfirm(video)">
+      <ion-thumbnail item-start>
+        <img src="{{ video.imgUrl }}">
+      </ion-thumbnail>
+      <h2>{{ video.title }}</h2>
+      <p>{{ video.description }}</p>
+      <ion-icon name="play" item-end color="textColor" *ngIf="video.statusDown"></ion-icon>
+      <ion-spinner item-end *ngIf="!video.statusDown"></ion-spinner>
+    </button> -->
+
+
+    <ion-item-sliding #item *ngFor="let video of videos">
+      <button ion-item class="list-video" (click)="showVideo(video)" [disabled]="!video.statusDown">
         <ion-thumbnail item-start>
-          <img src="https://i.ytimg.com/vi/uskO_96I4YU/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCOYJa-1983Ntb5IU7Y3v6Y6XzbLQ">
+          <img src="{{ video.imgUrl }}">
         </ion-thumbnail>
-        <h2>EDteam presenta</h2>
-        <p>¿Qué estamos planeando? Este sábado 3 de febrero develaremos el secreto. Avisa a todos tus conocidos que no compren en
-          EDteam (ni en ningún otro lugar).</p>
-        <ion-icon name="play" item-end color="textColor"></ion-icon>
+        <h2>{{ video.title }}</h2>
+        <p>{{ video.description }}</p>
+        <ion-icon name="play" item-end color="textColor" *ngIf="video.statusDown"></ion-icon>
+        <ion-spinner item-end *ngIf="!video.statusDown"></ion-spinner>
       </button>
-      <button ion-item class="list-video">
-        <ion-thumbnail item-start>
-          <img src="https://i.ytimg.com/vi/Vt-10hIyuFA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBNi6-YMy4sRaoSCn8mO9LUdZsTLg">
-        </ion-thumbnail>
-        <h2>Introducción a SQL</h2>
-        <p>Los datos son lo más importante en una aplicación. En este EDtaller daremos nuestros primeros pasos de SQL con Alexys
-          Lozada, aprende lo necesario para manejar bases de datos relacionales.</p>
-        <ion-icon name="play" item-end color="textColor"></ion-icon>
-      </button>
-      <button ion-item class="list-video" disabled>
-        <ion-thumbnail item-start>
-          <img src="https://i.ytimg.com/vi/tA01Lvgn1DA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCv0ULakM_4fvhcWCZiC6AkcBIl-Q">
-        </ion-thumbnail>
-        <h2>Beneficios de usar GSuite en la empresa</h2>
-        <p>Beneficios de usar GSuite en la empresa</p>
-        <ion-spinner item-end></ion-spinner>
-      </button>
-    </ion-list>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteVideoConfirm(video)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+    <!-- <button ion-item class="list-video" *ngIf="dataVideo.videoID" [disabled]="!dataVideo.statusDown" disabled>
+      <ion-thumbnail item-start>
+        <img src="{{ dataVideo.imgUrl }}">
+      </ion-thumbnail>
+      <h2>{{ dataVideo.title }}</h2>
+      <p>{{ dataVideo.description }}</p>
+      <ion-spinner item-end></ion-spinner>
+    </button> -->
+  </ion-list>
+  <ion-item padding *ngIf="videos.length < 1">
+    Sin ningun video descargados.
+    <ion-icon item-end small name="eye-off"></ion-icon>
+  </ion-item>
 </ion-content>

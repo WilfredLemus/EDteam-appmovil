@@ -4,23 +4,46 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Titulo de Video</ion-title>
+    <ion-title>{{ video.title }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
   <video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer" width="100%" height="210">
-    <source src="file:///data/data/me.wilfredlemus.edteam/files/videoyoutube.mp4" type="video/mp4" />
+    <source src="{{ video.videoUrl }}" type="video/mp4" />
   </video>
 
   <ion-list no-margin>
-    <ion-item>
-      Titulo del Video descargado
+    <ion-item (click)="showDescrip()">
+       {{ video.title }}
       <ion-icon item-end small name="ios-arrow-down"></ion-icon>
     </ion-item>
-    <ion-card-content>
-      Descripcion del video
+    <ion-card-content *ngIf="showDesc">
+       {{ video.description }}
     </ion-card-content>
+    <!-- <ion-row>
+      <ion-col col-12>
+        <button ion-button icon-left block outline color="danger" (click)="deleteVideoConfirm(video)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-col>
+    </ion-row> -->
+  </ion-list>
+  <hr>
+  <ion-list>
+    <ng-container *ngFor="let videoDown of videosDownload">
+      <button ion-item class="list-video" (click)="showVideo(videoDown)" *ngIf="videoDown.videoID !=  video.videoID">
+        <ion-thumbnail item-start>
+          <img src="{{ videoDown.imgUrl }}">
+        </ion-thumbnail>
+        <h2>{{ videoDown.title }}</h2>
+        <p>{{ videoDown.description }}</p>
+        <button ion-button clear icon-only item-end color="textColor">
+          <ion-icon name="play"></ion-icon>
+        </button>
+      </button>
+    </ng-container>
   </ion-list>
 </ion-content>

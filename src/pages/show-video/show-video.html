@@ -41,9 +41,15 @@
     </ion-row> -->
     <ion-row>
       <ion-col col-12>
-        <button ion-button icon-left block outline color="thirdColor">
+        <button ion-button icon-left block outline color="thirdColor" (click)="downloadVideo(video)">
           <ion-icon name="download"></ion-icon>
           Descargar
+        </button>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button icon-left block outline color="secondary" (click)="showVideoDown()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+          Descargado
         </button>
       </ion-col>
     </ion-row>

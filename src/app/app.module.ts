@@ -17,6 +17,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 // import { VideoPlayer } from '@ionic-native/video-player';
 import { YoutubeProvider } from '../providers/youtube/youtube';
 import { YouTubePipe } from '../pipes/you-tube/you-tube';
+import { IonicStorageModule } from '@ionic/storage';
+import { StorageProvider } from '../providers/storage/storage';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { YouTubePipe } from '../pipes/you-tube/you-tube';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,6 +53,7 @@ import { YouTubePipe } from '../pipes/you-tube/you-tube';
     YoutubeProvider,
     File,
     FileTransfer,
+    StorageProvider,
     // VideoPlayer
   ]
 })

@@ -35,7 +35,7 @@ export class YoutubeProvider {
     return this.http
       .get(this.ytURL + 'playlistItems?key=' + this.apiKey
       + '&playlistId=' + this.edtallerID
-      + '&part=snippet,id&maxResults=20')
+      + '&part=snippet,id&order=date&maxResults=20')
       .map(res => {
         return res.json()['items'];
       })
