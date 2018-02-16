@@ -25,8 +25,8 @@ export class MyApp {
     this.pages = [
       { title: 'Inicio', icon: 'home', component: HomePage },
       { title: 'EDtaller', icon: 'albums', component: EdtallerPage },
-      { title: 'Cursos', icon: 'bookmarks', component: EdtallerPage },
-      { title: 'Videos Descargados', icon: 'download', component: DownloadVideoPage },
+      // { title: 'Cursos', icon: 'bookmarks', component: EdtallerPage },
+      { title: 'Mis Descargas', icon: 'download', component: DownloadVideoPage },
     ];
 
   }

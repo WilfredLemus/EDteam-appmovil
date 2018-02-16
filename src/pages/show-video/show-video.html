@@ -41,13 +41,11 @@
     </ion-row> -->
     <ion-row>
       <ion-col col-12>
-        <button ion-button icon-left block outline color="thirdColor" (click)="downloadVideo(video)">
+        <button ion-button icon-left block outline color="thirdColor" (click)="downloadVideo(video)" *ngIf="!checkDown">
           <ion-icon name="download"></ion-icon>
           Descargar
         </button>
-      </ion-col>
-      <ion-col col-12>
-        <button ion-button icon-left block outline color="secondary" (click)="showVideoDown()">
+        <button ion-button icon-left block outline color="secondary" (click)="showVideoDown()" *ngIf="checkDown">
           <ion-icon name="checkmark-circle"></ion-icon>
           Descargado
         </button>

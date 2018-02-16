@@ -20,17 +20,19 @@
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
 
   <ion-card *ngFor="let video of listVideos | async" (click)="showVideo(video)">
-    <img src="{{ video.snippet.thumbnails.high.url }}" />
+    <div class="imageCrop">
+      <img src="{{ video.snippet.thumbnails.high.url }}" />
+    </div>
     <ion-card-content>
       <ion-card-title>
         {{ video.snippet.title }}
       </ion-card-title>
-      <ion-item no-padding>
+      <!-- <ion-item no-padding>
         <button ion-button icon-left item-end outline color="thirdColor">
           <ion-icon name="download"></ion-icon>
           Descarg.
         </button>
-      </ion-item>
+      </ion-item> -->
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -13,7 +13,10 @@ export class StorageProvider {
 
   getAll() {
     return this.parseAllItem()
-    // return this.parseAllItem();
+  }
+
+  getAllIDs() {
+    return this.storage.keys();
   }
 
   getID(id) {

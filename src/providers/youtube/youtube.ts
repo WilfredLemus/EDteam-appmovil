@@ -24,7 +24,7 @@ export class YoutubeProvider {
     // https://www.googleapis.com/youtube/v3/search?key={your_key_here}&channelId={channel_id_here}&part=snippet,id&order=date&maxResults=20
     return this.http
       .get(this.ytURL + 'search?key='+ this.apiKey
-          + '&channelId=' + this.channelID
+      + '&channelId=' + this.channelID
       + '&part=snippet,id&order=date&maxResults=20')
       .map(res => {
         return res.json()['items'];
