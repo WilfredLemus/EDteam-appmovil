@@ -7,30 +7,48 @@
       <img src="assets/imgs/EDteam-logo.svg" class="title-logo">
     </ion-title>
     <ion-buttons end>
-      <!-- <button ion-button icon-only>
+      <button ion-button icon-only>
         <ion-icon name="search"></ion-icon>
-      </button> -->
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content *ngIf="!dataLoad">
-  <ion-spinner *ngIf="!dataLoad"></ion-spinner>
-</ion-content>
-<ion-content *ngIf="listVideos !== undefined">
-  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
 
-  <ion-card *ngFor="let video of listVideos | async" (click)="showVideo(video)">
-    <img src="{{ video.snippet.thumbnails.high.url }}" />
-    <ion-card-content>
-      <ion-card-title>
-        {{ video.snippet.title }}
-      </ion-card-title>
-      <ion-item no-padding>
-        <button ion-button icon-left item-end color="textColor">
+<ion-content>
+  <ng-container *ngIf="networkStatus.connectNet">
+    <ion-spinner *ngIf="!dataLoad"></ion-spinner>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
+
+    <ion-card *ngFor="let video of listVideos | async" (click)="showVideo(video)">
+      <div class="imageCrop">
+        <img src="{{ video.snippet.thumbnails.high.url }}" />
+      </div>
+      <ion-card-content>
+        <ion-card-title>
+          {{ video.snippet.title }}
+        </ion-card-title>
+        <!-- <ion-item no-padding>
+          <button ion-button icon-left item-end outline color="thirdColor">
+            <ion-icon name="download"></ion-icon>
+            Descarg.
+          </button>
+        </ion-item> -->
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="!networkStatus.connectNet">
+    <ion-card>
+      <ion-card-header>
+        Estas desconectado de Internet!
+      </ion-card-header>
+      <ion-card-content>
+        No te precupes puedes ver tus videos descarcados.
+        <button ion-button icon-left block outline color="thirdColor" (click)="showVideoDown()">
           <ion-icon name="download"></ion-icon>
-          Descarg.
+          Mis Descargas
         </button>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 </ion-content>

@@ -25,16 +25,34 @@
 
 
 <ion-content>
-  <ion-spinner *ngIf="!dataLoad"></ion-spinner>
-  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
-  <ion-list *ngIf="videosEDtaller !== undefined">
-    <button ion-item *ngFor="let video of videosEDtaller | async" (click)="showVideo(video)">
-      <ion-thumbnail item-start>
-        <img src="{{ video.snippet.thumbnails.default.url }}">
-      </ion-thumbnail>
-      <h2>{{ video.snippet.title }}</h2>
-      <p>{{ video.snippet.description }}</p>
-      <button ion-button clear icon-only item-end color="textColor"><ion-icon  name="download"></ion-icon></button>
-    </button>
-  </ion-list>
+  <ng-container *ngIf="networkStatus.connectNet">
+    <ion-spinner *ngIf="!dataLoad"></ion-spinner>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
+
+    <ion-list *ngIf="videosEDtaller !== undefined">
+      <button ion-item *ngFor="let video of videosEDtaller | async" (click)="showVideo(video)">
+        <ion-thumbnail item-start>
+          <img src="{{ video.snippet.thumbnails.default.url }}">
+        </ion-thumbnail>
+        <h2>{{ video.snippet.title }}</h2>
+        <p>{{ video.snippet.description }}</p>
+        <ion-icon name="play" item-end icon-only color="textColor"></ion-icon>
+      </button>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!networkStatus.connectNet">
+    <ion-card>
+      <ion-card-header>
+        Estas desconectado de Internet!
+      </ion-card-header>
+      <ion-card-content>
+        No te precupes puedes ver tus videos descarcados.
+        <button ion-button icon-left block outline color="thirdColor" (click)="showVideoDown()">
+          <ion-icon name="download"></ion-icon>
+          Mis Descargas
+        </button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 </ion-content>

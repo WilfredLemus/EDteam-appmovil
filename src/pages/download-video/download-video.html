@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Videos Descargados</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="deleteAllConfirm()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-spinner *ngIf="!dataLoad"></ion-spinner>
+  <ion-list *ngIf="dataLoad">
+    <!-- <button ion-item class="list-video" *ngFor="let video of videos" (click)="showVideo(video)" [disabled]="!video.statusDown" (press)="deleteVideoConfirm(video)">
+      <ion-thumbnail item-start>
+        <img src="{{ video.imgUrl }}">
+      </ion-thumbnail>
+      <h2>{{ video.title }}</h2>
+      <p>{{ video.description }}</p>
+      <ion-icon name="play" item-end color="textColor" *ngIf="video.statusDown"></ion-icon>
+      <ion-spinner item-end *ngIf="!video.statusDown"></ion-spinner>
+    </button> -->
+
+
+    <ion-item-sliding #item *ngFor="let video of videos">
+      <button ion-item class="list-video" (click)="showVideo(video)" [disabled]="!video.statusDown">
+        <ion-thumbnail item-start>
+          <img src="{{ video.imgUrl }}">
+        </ion-thumbnail>
+        <h2>{{ video.title }}</h2>
+        <p>{{ video.description }}</p>
+        <ion-icon name="play" item-end color="textColor" *ngIf="video.statusDown"></ion-icon>
+        <ion-spinner item-end *ngIf="!video.statusDown"></ion-spinner>
+      </button>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteVideoConfirm(video)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+    <!-- <button ion-item class="list-video" *ngIf="dataVideo.videoID" [disabled]="!dataVideo.statusDown" disabled>
+      <ion-thumbnail item-start>
+        <img src="{{ dataVideo.imgUrl }}">
+      </ion-thumbnail>
+      <h2>{{ dataVideo.title }}</h2>
+      <p>{{ dataVideo.description }}</p>
+      <ion-spinner item-end></ion-spinner>
+    </button> -->
+  </ion-list>
+  <ion-item padding *ngIf="videos.length < 1">
+    Sin ningun video descargados.
+    <ion-icon item-end small name="eye-off"></ion-icon>
+  </ion-item>
+</ion-content>

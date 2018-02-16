@@ -6,28 +6,34 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { EdtallerPage } from '../pages/edtaller/edtaller';
 import { ShowVideoPage } from '../pages/show-video/show-video';
+import { DownloadVideoPage } from './../pages/download-video/download-video';
+import { NetworkStatusProvider } from '../providers/network-status/network-status';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: "app.html"
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
 
-  pages: Array<{ title: string, icon: string, component: any}>;
+  pages: Array<{ title: string; icon: string; component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public networkStatus: NetworkStatusProvider
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Inicio', icon: 'home', component: HomePage },
-      { title: 'EDtaller', icon: 'albums', component: EdtallerPage },
-      { title: 'Cursos', icon: 'bookmarks', component: EdtallerPage },
-      { title: 'Descargados', icon: 'download', component: EdtallerPage },
+      { title: "Inicio", icon: "home", component: HomePage },
+      { title: "EDtaller", icon: "albums", component: EdtallerPage },
+      // { title: 'Cursos', icon: 'bookmarks', component: EdtallerPage },
+      { title: "Mis Descargas", icon: "download", component: DownloadVideoPage }
     ];
-
   }
 
   initializeApp() {
@@ -36,6 +42,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.networkStatus.testNetwork();
     });
   }
 
