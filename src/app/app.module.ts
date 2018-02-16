@@ -19,6 +19,8 @@ import { YoutubeProvider } from '../providers/youtube/youtube';
 import { YouTubePipe } from '../pipes/you-tube/you-tube';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage';
+import { Network } from '@ionic-native/network';
+import { NetworkStatusProvider } from '../providers/network-status/network-status';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { StorageProvider } from '../providers/storage/storage';
     File,
     FileTransfer,
     StorageProvider,
+    Network,
+    NetworkStatusProvider,
     // VideoPlayer
   ]
 })
