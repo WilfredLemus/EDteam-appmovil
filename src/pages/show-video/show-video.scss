@@ -1,0 +1,17 @@
+page-show-video {
+  .list-video {
+    padding-left: 2px;
+
+    ion-thumbnail {
+      margin-right: 5px !important;
+
+      img {
+        width: 110px;
+      }
+    }
+
+    ion-badge {
+      font-size: 10px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+edtaller {
+  .item {
+    padding-left: 2px;
+
+    ion-thumbnail {
+      margin-right: 5px !important;
+
+      img {
+        width: 110px;
+      }
+    }
+
+    ion-badge {
+      font-size: 10px;
+    }
+  }
+
+  .load-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: auto;
+  }
+}

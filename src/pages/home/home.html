@@ -3,16 +3,53 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title text-center>
+      <img src="assets/imgs/EDteam-logo.svg" class="title-logo">
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
+  <ng-container *ngIf="networkStatus.connectNet">
+    <ion-spinner class="load-spinner" *ngIf="!dataLoad"></ion-spinner>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <ion-card *ngFor="let video of listVideos" (click)="showVideo(video)">
+      <div class="imageCrop">
+        <img src="{{ video.snippet.thumbnails.high.url }}" />
+      </div>
+      <ion-card-content>
+        <ion-card-title>
+          {{ video.snippet.title }}
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-infinite-scroll (ionInfinite)="loadNextVideos($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Cargando Mas Videos...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  </ng-container>
+
+  <ng-container *ngIf="!networkStatus.connectNet">
+    <ion-card>
+      <ion-card-header>
+        Estas desconectado de Internet!
+      </ion-card-header>
+      <ion-card-content>
+        No te precupes puedes ver tus videos descarcados.
+        <button ion-button icon-left block outline color="thirdColor" (click)="showVideoDown()">
+          <ion-icon name="download"></ion-icon>
+          Mis Descargas
+        </button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 </ion-content>
