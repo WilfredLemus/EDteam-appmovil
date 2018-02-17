@@ -25,9 +25,20 @@ export class YoutubeProvider {
     return this.http
       .get(this.ytURL + 'search?key='+ this.apiKey
       + '&channelId=' + this.channelID
-      + '&part=snippet,id&order=date&maxResults=20')
+      + '&part=snippet,id&order=date')
       .map(res => {
-        return res.json()['items'];
+        return res.json();
+      })
+  }
+
+  getListVideosNextPage(PageToken){
+    return this.http
+      .get(this.ytURL + 'search?key='+ this.apiKey
+      + '&channelId=' + this.channelID
+      + '&pageToken=' + PageToken
+      + '&part=snippet,id&order=date')
+      .map(res => {
+        return res.json();
       })
   }
 
@@ -35,9 +46,20 @@ export class YoutubeProvider {
     return this.http
       .get(this.ytURL + 'playlistItems?key=' + this.apiKey
       + '&playlistId=' + this.edtallerID
-      + '&part=snippet,id&order=date&maxResults=20')
+      + '&part=snippet,id&order=date&maxResults=9')
       .map(res => {
-        return res.json()['items'];
+        return res.json();
+      })
+  }
+
+  getVideosEDtallerNextPage(PageToken) {
+    return this.http
+      .get(this.ytURL + 'playlistItems?key=' + this.apiKey
+      + '&playlistId=' + this.edtallerID
+      + '&pageToken=' + PageToken
+      + '&part=snippet,id&order=date')
+      .map(res => {
+        return res.json();
       })
   }
 
