@@ -7,7 +7,7 @@
       <img src="assets/imgs/EDteam-logo.svg" class="title-logo">
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="showSearch()">
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
@@ -16,10 +16,10 @@
 
 <ion-content>
   <ng-container *ngIf="networkStatus.connectNet">
-    <ion-spinner *ngIf="!dataLoad"></ion-spinner>
+    <ion-spinner class="load-spinner" *ngIf="!dataLoad"></ion-spinner>
     <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" *ngIf="showsearch"></ion-searchbar>
 
-    <ion-card *ngFor="let video of listVideos | async" (click)="showVideo(video)">
+    <ion-card *ngFor="let video of listVideos" (click)="showVideo(video)">
       <div class="imageCrop">
         <img src="{{ video.snippet.thumbnails.high.url }}" />
       </div>
@@ -27,14 +27,15 @@
         <ion-card-title>
           {{ video.snippet.title }}
         </ion-card-title>
-        <!-- <ion-item no-padding>
-          <button ion-button icon-left item-end outline color="thirdColor">
-            <ion-icon name="download"></ion-icon>
-            Descarg.
-          </button>
-        </ion-item> -->
       </ion-card-content>
     </ion-card>
+    <ion-infinite-scroll (ionInfinite)="loadNextVideos($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Cargando Mas Videos...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
   </ng-container>
 
   <ng-container *ngIf="!networkStatus.connectNet">

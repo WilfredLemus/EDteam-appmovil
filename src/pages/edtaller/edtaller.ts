@@ -15,8 +15,10 @@ import { DownloadVideoPage } from '../download-video/download-video';
   templateUrl: "edtaller.html"
 })
 export class EdtallerPage {
-  playlists: Observable<any[]>;
-  videosEDtaller: Observable<any[]>;
+  // playlists: Observable<any[]>;
+  videosEDtaller: any = [];
+  totalResults: number;
+  PageToken: any;
   dataLoad: boolean = false;
   showsearch: boolean = false;
 
@@ -33,41 +35,41 @@ export class EdtallerPage {
     this.getVideosEDtaller();
   }
 
-
   showSearch() {
     this.showsearch = !this.showsearch;
   }
 
-  getVideos() {
-    this.playlists = this.ytProvider.getVideosEDtaller();
-    this.playlists
-      .toPromise()
-      .then(data => {
-        this.dataLoad = true;
-      })
-      .catch(err => {
-        let alert = this.alertCtrl.create({
-          title: "Error",
-          message: "Ha ocurrido un error, al obtener los datos.",
-          buttons: ["OK"]
-        });
-        alert.present();
-        console.log(err);
-      });
-    // this.playlists.subscribe(data => {
-    //   console.log(data);
-    //   this.dataLoad = true;
-    // }, err => {
-    //   console.log('ERROR: ' + err);
-    // })
-  }
+  // getVideos() {
+  //   this.playlists = this.ytProvider.getVideosEDtaller();
+  //   this.playlists
+  //     .toPromise()
+  //     .then(data => {
+  //       this.dataLoad = true;
+  //     })
+  //     .catch(err => {
+  //       let alert = this.alertCtrl.create({
+  //         title: "Error",
+  //         message: "Ha ocurrido un error, al obtener los datos.",
+  //         buttons: ["OK"]
+  //       });
+  //       alert.present();
+  //       console.log(err);
+  //     });
+  //   // this.playlists.subscribe(data => {
+  //   //   console.log(data);
+  //   //   this.dataLoad = true;
+  //   // }, err => {
+  //   //   console.log('ERROR: ' + err);
+  //   // })
+  // }
 
   getVideosEDtaller() {
-    this.videosEDtaller = this.ytProvider.getVideosEDtaller();
-    this.videosEDtaller.subscribe(
-      data => {
+  this.ytProvider.getVideosEDtaller().subscribe(data => {
         console.log(data);
+        this.videosEDtaller = this.videosEDtaller.concat(data["items"]);
         this.dataLoad = true;
+        this.PageToken = data["nextPageToken"];
+        this.totalResults = data["pageInfo"]["totalResults"];
       },
       err => {
         console.log("ERROR: " + err);
@@ -76,14 +78,35 @@ export class EdtallerPage {
   }
 
   showVideo(video) {
-    if(this.networkStatus.connectNet) {
+    if (this.networkStatus.connectNet) {
       this.navCtrl.push(ShowVideoPage, { video });
-    }else {
+    } else {
       this.navCtrl.setRoot(DownloadVideoPage);
     }
   }
 
   showVideoDown() {
     this.navCtrl.setRoot(DownloadVideoPage);
+  }
+
+  loadNextVideos(infiniteScroll) {
+    console.log(this.PageToken);
+    this.ytProvider.getVideosEDtallerNextPage(this.PageToken).subscribe(
+      data => {
+        // console.log(data);
+        this.videosEDtaller = this.videosEDtaller.concat(data["items"]);
+        this.dataLoad = true;
+        this.PageToken = data["nextPageToken"];
+        this.totalResults = data["pageInfo"]["totalResults"];
+        infiniteScroll.complete();
+      },
+      err => {
+        console.log("ERROR: " + err);
+      }
+    );
+
+    if (this.totalResults == this.videosEDtaller.length) {
+      infiniteScroll.enable(false);
+    }
   }
 }
