@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { YoutubeProvider } from '../../providers/youtube/youtube';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from "rxjs/Subscription";
-import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { NetworkStatusProvider } from "../../providers/network-status/network-status";
 
 import { ShowVideoPage } from "../../pages/show-video/show-video";
 import { DownloadVideoPage } from '../download-video/download-video';
 
-@IonicPage()
+
+
 @Component({
   selector: "edtaller",
   templateUrl: "edtaller.html"
 })
 export class EdtallerPage {
-  // playlists: Observable<any[]>;
   videosEDtaller: any = [];
   totalResults: number;
   PageToken: any;
@@ -25,7 +22,6 @@ export class EdtallerPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private alertCtrl: AlertController,
     private ytProvider: YoutubeProvider,
     public toastCtrl: ToastController,
     public networkStatus: NetworkStatusProvider

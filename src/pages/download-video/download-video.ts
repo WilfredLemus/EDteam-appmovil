@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, Platform, NavParams, AlertController, ToastController } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { NavController, Platform, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-// import { VideoPlayer } from '@ionic-native/video-player';
 import { YoutubeProvider } from '../../providers/youtube/youtube';
 import { Observable } from 'rxjs/Observable';
 import { StorageProvider } from './../../providers/storage/storage';
 import { ShowVideoDownloadPage } from '../show-video-download/show-video-download';
 
 
-@IonicPage()
 @Component({
   selector: "page-download-video",
   templateUrl: "download-video.html"
@@ -63,7 +61,7 @@ export class DownloadVideoPage {
           console.log("GUARDADO");
           console.log(this.dataVideo);
           let toast = this.toastCtrl.create({
-            message: "Descargado Video!",
+            message: "Descargando el Video!",
             duration: 4000
           });
           toast.present();
@@ -125,6 +123,10 @@ export class DownloadVideoPage {
                 .then(data => {
                   console.log("ACTUALIZADOO");
                   this.getAllVideoDownload();
+                  this.toastCtrl.create({
+                    message: "Tu video esta listo!",
+                    duration: 3000
+                  }).present();
                 })
                 .catch(err => {
                   console.log(err);

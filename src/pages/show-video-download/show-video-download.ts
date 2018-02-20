@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
 import { File } from "@ionic-native/file";
 
 
-@IonicPage()
 @Component({
   selector: "page-show-video-download",
   templateUrl: "show-video-download.html"
