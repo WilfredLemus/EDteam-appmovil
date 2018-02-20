@@ -1,5 +1,5 @@
 # EDteam App Movil
-Aplicación no oficial de EDteam. Descarga para [Android](https://drive.google.com/open?id=1R0XezEn9SDfUbIyUc1t9sCmgYtA0ozoi) y para IOS(```Estamos trabajando para compilarlo para IOS```)
+Aplicación no oficial de EDteam. Descarga para [Android](https://drive.google.com/open?id=1dDxicW_3dCt3KG8gTcy-QEHs6TsrZOVF) y para IOS(```Estamos trabajando para compilarlo para IOS```)
 
 - Contenido de Youtube
 - Descarga de Videos para verlo offline
