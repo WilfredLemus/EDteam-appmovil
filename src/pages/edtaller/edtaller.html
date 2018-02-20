@@ -40,7 +40,7 @@
       </button>
 
       <ion-infinite-scroll (ionInfinite)="loadNextVideos($event)">
-        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando Mas Videos...">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando Videos...">
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
     </ion-list>
@@ -52,7 +52,7 @@
         Estas desconectado de Internet!
       </ion-card-header>
       <ion-card-content>
-        No te precupes puedes ver tus videos descarcados.
+        No te preocupues puedes ver tus videos descargados.
         <button ion-button icon-left block outline color="thirdColor" (click)="showVideoDown()">
           <ion-icon name="download"></ion-icon>
           Mis Descargas

@@ -15,14 +15,14 @@ export class NetworkStatusProvider {
     this.network.onConnect().subscribe(_ => {
       this.connectNet = true
       this.toastCtrl.create({
-            message: "Estas conectado a Internet!",
+            message: "Red Conectada!",
             duration: 3000
           }).present();
     }, error => console.error(error));
     this.network.onDisconnect().subscribe(_ => {
       this.connectNet = false
       this.toastCtrl.create({
-            message: "Estas DESCONECTADO a Internet!",
+            message: "Red Desconectada!",
             duration: 3000
           }).present();
     }, error => console.error(error));
