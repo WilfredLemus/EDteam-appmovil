@@ -1,5 +1,5 @@
 # EDteam App Movil
-Aplicación no oficial de EDteam.
+Aplicación no oficial de EDteam. Descarga para [Android](https://drive.google.com/open?id=1R0XezEn9SDfUbIyUc1t9sCmgYtA0ozoi) y para IOS(```Estamos trabajando para compilarlo para IOS```)
 
 - Contenido de Youtube
 - Descarga de Videos para verlo offline
@@ -8,9 +8,9 @@ Aplicación no oficial de EDteam.
 Si encuentras un error o quisieras alguna feature puedes agregarlo [AQUI](https://github.com/WilfredLemus/FaceDetect/issues/new) 
 
 ## Contribución
-Agradecemos tu aportación, puedes realizar tus aportaciones en la rama ``dev `` :
+Agradecemos tu aportación, puedes realizar tus aportaciones en la rama [dev](https://github.com/WilfredLemus/EDteam-appmovil/tree/dev) :
 - Explica muy bien que cambios realizas
-- Crea un ``Pull requests```
+- Crea un [Pull requests](https://github.com/WilfredLemus/EDteam-appmovil/compare)
 
 ## Tecnologías Utilizadas
 - [Ionic](http://ionicframework.com/) 
